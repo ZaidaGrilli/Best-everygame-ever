@@ -38,6 +38,8 @@ function App() {
           leftGame={rankingEngine.currentComparison.left}
           rightGame={rankingEngine.currentComparison.right}
           comparisonsCompleted={rankingEngine.comparisonsCompleted}
+          estimatedTotalComparisons={rankingEngine.estimatedTotalComparisons}
+          progressPercent={rankingEngine.progressPercent}
           onChooseLeft={rankingEngine.chooseLeft}
           onChooseRight={rankingEngine.chooseRight}
         />

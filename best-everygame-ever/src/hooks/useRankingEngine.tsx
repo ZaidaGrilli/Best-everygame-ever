@@ -19,6 +19,7 @@ type RankingEngineState = {
   merge: MergeState | null;
   comparisonsCompleted: number;
   finalRanking: Game[];
+  totalGames: number;
 };
 
 const initialState: RankingEngineState = {
@@ -29,6 +30,7 @@ const initialState: RankingEngineState = {
   merge: null,
   comparisonsCompleted: 0,
   finalRanking: [],
+  totalGames: 0,
 };
 
 function createInitialState(games: Game[]): RankingEngineState {
@@ -53,6 +55,7 @@ function createInitialState(games: Game[]): RankingEngineState {
     merge: null,
     comparisonsCompleted: 0,
     finalRanking: [],
+    totalGames: games.length,
   });
 }
 
@@ -162,6 +165,15 @@ function selectWinner(
     merge: null,
   });
 }
+function calculateMaximumComparisons(gameCount: number): number {
+  if (gameCount < 2) {
+    return 0;
+  }
+
+  const levels = Math.ceil(Math.log2(gameCount));
+
+  return gameCount * levels - 2 ** levels + 1;
+}
 
 export function useRankingEngine() {
   const [state, setState] = useState<RankingEngineState>(initialState);
@@ -196,11 +208,33 @@ export function useRankingEngine() {
   function resetRanking() {
     setState(initialState);
   }
+  const estimatedTotalComparisons = useMemo(() => {
+    return calculateMaximumComparisons(state.totalGames);
+  }, [state.totalGames]);
+
+  const progressPercent = useMemo(() => {
+    if (state.status === "completed") {
+      return 100;
+    }
+
+    if (estimatedTotalComparisons === 0) {
+      return 0;
+    }
+
+    return Math.min(
+      99,
+      Math.round(
+        (state.comparisonsCompleted / estimatedTotalComparisons) * 100,
+      ),
+    );
+  }, [state.status, state.comparisonsCompleted, estimatedTotalComparisons]);
 
   return {
     status: state.status,
     currentComparison,
     comparisonsCompleted: state.comparisonsCompleted,
+    estimatedTotalComparisons,
+    progressPercent,
     finalRanking: state.finalRanking,
     startRanking,
     chooseLeft,

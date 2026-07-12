@@ -5,6 +5,8 @@ type GameComparisonProps = {
   leftGame: Game;
   rightGame: Game;
   comparisonsCompleted: number;
+  estimatedTotalComparisons: number;
+  progressPercent: number;
   onChooseLeft: () => void;
   onChooseRight: () => void;
 };
@@ -13,6 +15,8 @@ function GameComparison({
   leftGame,
   rightGame,
   comparisonsCompleted,
+  estimatedTotalComparisons,
+  progressPercent,
   onChooseLeft,
   onChooseRight,
 }: GameComparisonProps) {
@@ -39,6 +43,30 @@ function GameComparison({
       <header className="comparison-header">
         <p className="eyebrow">Head-to-head comparison</p>
         <h1>Which game is better?</h1>
+        <div className="comparison-progress">
+          <div className="progress-details">
+            <span>{progressPercent}% complete</span>
+
+            <span>
+              {comparisonsCompleted} of approximately{" "}
+              {estimatedTotalComparisons} comparisons
+            </span>
+          </div>
+
+          <div
+            className="progress-track"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={progressPercent}
+            aria-label="Ranking progress"
+          >
+            <div
+              className="progress-fill"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
+        </div>
 
         <p>{comparisonsCompleted} comparisons completed</p>
       </header>
