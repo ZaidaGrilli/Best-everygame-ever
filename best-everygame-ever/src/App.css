@@ -129,3 +129,268 @@ h1 {
   flex-shrink: 0;
   color: #9298a8;
 }
+.game-review,
+.comparison-page,
+.ranking-results {
+  width: min(100%, 1100px);
+}
+
+.review-header,
+.results-header,
+.comparison-header {
+  margin-bottom: 32px;
+}
+
+.review-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.review-header h2,
+.comparison-header h1,
+.results-header h1 {
+  margin: 0 0 12px;
+}
+
+.duplicate-section {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: #251f18;
+  border: 1px solid #5e4b32;
+  border-radius: 20px;
+}
+
+.duplicate-groups {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.duplicate-group {
+  padding: 12px;
+  background: #17191f;
+  border-radius: 14px;
+}
+
+.duplicate-game {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px;
+}
+
+.duplicate-game div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.duplicate-game span {
+  color: #9298a8;
+}
+
+.search-field {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.search-field input,
+.review-game input {
+  padding: 12px;
+  color: #f5f5f5;
+  background: #1b1e26;
+  border: 1px solid #303542;
+  border-radius: 10px;
+}
+
+.review-list {
+  display: grid;
+  gap: 8px;
+}
+
+.review-game {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  background: #1b1e26;
+  border: 1px solid #303542;
+  border-radius: 14px;
+}
+
+.review-game-duplicate {
+  border-color: #a47c3e;
+}
+
+.review-game-fields {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 160px;
+  align-items: center;
+  gap: 16px;
+}
+
+.review-game-fields span {
+  color: #9298a8;
+}
+
+.game-number {
+  font-weight: 700;
+  color: #9298a8;
+}
+
+.text-button,
+.danger-button {
+  color: #ffb5b5;
+  background: transparent;
+  border: 0;
+}
+
+.comparison-header {
+  text-align: center;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 28px;
+}
+
+.game-choice {
+  padding: 0;
+  overflow: hidden;
+  color: #f5f5f5;
+  text-align: left;
+  background: #1b1e26;
+  border: 1px solid #303542;
+  border-radius: 28px;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease;
+}
+
+.game-choice:hover {
+  transform: translateY(-6px);
+  border-color: #aeb8ff;
+}
+
+.game-image-placeholder {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  place-items: center;
+  overflow: hidden;
+  font-size: 5rem;
+  font-weight: 800;
+  color: #aeb8ff;
+  background: #272b36;
+}
+
+.game-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-choice-content {
+  padding: 28px;
+}
+
+.game-choice-content h2 {
+  margin: 0 0 8px;
+  font-size: 1.8rem;
+}
+
+.game-choice-content p {
+  color: #9298a8;
+}
+
+.game-choice-content span {
+  display: block;
+  margin-top: 28px;
+  font-weight: 700;
+  color: #aeb8ff;
+}
+
+.versus {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #9298a8;
+}
+
+.keyboard-hint {
+  margin-top: 28px;
+  text-align: center;
+  color: #9298a8;
+}
+
+.final-ranking {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.final-ranking li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  background: #1b1e26;
+  border: 1px solid #303542;
+  border-radius: 14px;
+}
+
+.ranking-number {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  place-items: center;
+  font-weight: 800;
+  background: #272b36;
+  border-radius: 50%;
+}
+
+.final-ranking li div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.final-ranking li div span {
+  color: #9298a8;
+}
+
+.secondary-button {
+  margin-top: 28px;
+  padding: 12px 20px;
+  color: #f5f5f5;
+  background: transparent;
+  border: 1px solid #4b5160;
+  border-radius: 999px;
+}
+
+@media (max-width: 760px) {
+  .review-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .review-game-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .versus {
+    text-align: center;
+  }
+}
