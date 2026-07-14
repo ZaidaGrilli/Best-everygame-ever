@@ -435,3 +435,96 @@ h1 {
     gap: 6px;
   }
 }
+.save-progress-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0 32px;
+}
+
+.save-message {
+  font-weight: 700;
+  color: #aeb8ff;
+}
+
+.resume-section {
+  margin-top: 28px;
+  padding: 20px;
+  background: #1b1e26;
+  border: 1px solid #303542;
+  border-radius: 18px;
+}
+
+.resume-section p {
+  margin-top: 0;
+}
+
+.resume-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+/* ==========================================================
+   DEV-ONLY PANEL STYLES
+   These styles are harmless in production because the panel
+   itself is not rendered when import.meta.env.DEV is false.
+   Remove this block later if the panel is permanently deleted.
+========================================================== */
+
+.developer-panel {
+  width: min(100%, 1100px);
+  margin-top: 32px;
+  padding: 24px;
+  font-family: Consolas, Monaco, "Courier New", monospace;
+  background: #12151b;
+  border: 1px dashed #6f7cff;
+  border-radius: 16px;
+}
+
+.developer-panel h2 {
+  margin-top: 0;
+  color: #b8c0ff;
+}
+
+.developer-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  );
+  gap: 12px;
+  margin: 0;
+}
+
+.developer-grid div {
+  padding: 12px;
+  background: #1b1f28;
+  border-radius: 10px;
+}
+
+.developer-grid dt {
+  margin-bottom: 6px;
+  font-size: 0.75rem;
+  color: #9199a8;
+  text-transform: uppercase;
+}
+
+.developer-grid dd {
+  margin: 0;
+  font-weight: 700;
+  color: #f2f4ff;
+}
+
+.developer-current-pair {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #303644;
+}
+
+.developer-current-pair p {
+  margin: 6px 0;
+}
+
+/* ================= END DEV-ONLY PANEL STYLES ============= */

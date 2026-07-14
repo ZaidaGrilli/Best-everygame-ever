@@ -3,4 +3,5 @@ export type Game = {
   title: string;
   platform?: string;
   imageUrl?: string;
+  rawgId?: number;
 };

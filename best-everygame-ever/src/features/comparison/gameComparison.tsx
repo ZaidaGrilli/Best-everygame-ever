@@ -9,6 +9,8 @@ type GameComparisonProps = {
   progressPercent: number;
   onChooseLeft: () => void;
   onChooseRight: () => void;
+  onSaveProgress: () => void;
+  saveMessage: string;
 };
 
 function GameComparison({
@@ -19,6 +21,8 @@ function GameComparison({
   progressPercent,
   onChooseLeft,
   onChooseRight,
+  onSaveProgress,
+  saveMessage,
 }: GameComparisonProps) {
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -51,6 +55,19 @@ function GameComparison({
               {comparisonsCompleted} of approximately{" "}
               {estimatedTotalComparisons} comparisons
             </span>
+            <div className="save-progress-area">
+              <button
+                className="secondary-button"
+                type="button"
+                onClick={onSaveProgress}
+              >
+                Save progress
+              </button>
+
+              {saveMessage && (
+                <span className="save-message">{saveMessage}</span>
+              )}
+            </div>
           </div>
 
           <div

@@ -11,7 +11,7 @@ type MergeState = {
   merged: Game[];
 };
 
-type RankingEngineState = {
+export type RankingEngineState = {
   status: RankingStatus;
   currentRuns: Game[][];
   nextRuns: Game[][];
@@ -189,6 +189,41 @@ export function useRankingEngine() {
     };
   }, [state.merge]);
 
+  // ============================================================
+  // DEV DEBUG INFO
+  // Safe to remove later. This is only used by the developer panel.
+  // ============================================================
+
+  const debugInfo = useMemo(() => {
+    return {
+      status: state.status,
+      comparisonsCompleted: state.comparisonsCompleted,
+      totalGames: state.totalGames,
+
+      currentRunsCount: state.currentRuns.length,
+      nextRunsCount: state.nextRuns.length,
+      pairIndex: state.pairIndex,
+
+      leftIndex: state.merge?.leftIndex ?? null,
+      rightIndex: state.merge?.rightIndex ?? null,
+
+      currentLeftTitle: state.merge?.left[state.merge.leftIndex]?.title ?? null,
+
+      currentRightTitle:
+        state.merge?.right[state.merge.rightIndex]?.title ?? null,
+
+      currentLeftRunSize: state.merge?.left.length ?? 0,
+      currentRightRunSize: state.merge?.right.length ?? 0,
+      mergedItemsCount: state.merge?.merged.length ?? 0,
+
+      finalRankingCount: state.finalRanking.length,
+    };
+  }, [state]);
+
+  // ============================================================
+  // END DEV DEBUG INFO
+  // ============================================================
+
   function startRanking(games: Game[]) {
     if (games.length < 2) {
       return;
@@ -229,6 +264,10 @@ export function useRankingEngine() {
     );
   }, [state.status, state.comparisonsCompleted, estimatedTotalComparisons]);
 
+  function restoreRanking(savedState: RankingEngineState) {
+    setState(savedState);
+  }
+
   return {
     status: state.status,
     currentComparison,
@@ -236,9 +275,18 @@ export function useRankingEngine() {
     estimatedTotalComparisons,
     progressPercent,
     finalRanking: state.finalRanking,
+    rankingState: state,
+
+    // ==========================================================
+    // DEV DEBUG INFO
+    // Remove this property if the developer panel is deleted.
+    // ==========================================================
+    debugInfo,
+
     startRanking,
     chooseLeft,
     chooseRight,
     resetRanking,
+    restoreRanking,
   };
 }
