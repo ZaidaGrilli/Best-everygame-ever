@@ -466,6 +466,43 @@ h1 {
   gap: 12px;
   flex-wrap: wrap;
 }
+
+.game-image-container {
+  position: relative;
+  display: grid;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  place-items: center;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    #272b36,
+    #1d2028
+  );
+}
+
+.game-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-initial {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #aeb8ff;
+}
+
+.image-status-text {
+  color: #9298a8;
+}
+
+.game-image-container small {
+  position: absolute;
+  bottom: 18px;
+  color: #9298a8;
+}
+
 /* ==========================================================
    DEV-ONLY PANEL STYLES
    These styles are harmless in production because the panel

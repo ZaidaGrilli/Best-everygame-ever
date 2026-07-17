@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import type { Game } from "../../types/game";
+import GameImage from "../../components/GameImage";
 
 type GameComparisonProps = {
   leftGame: Game;
@@ -90,13 +91,7 @@ function GameComparison({
 
       <div className="comparison-grid">
         <button className="game-choice" type="button" onClick={onChooseLeft}>
-          <div className="game-image-placeholder">
-            {leftGame.imageUrl ? (
-              <img src={leftGame.imageUrl} alt="" />
-            ) : (
-              <span>{leftGame.title.charAt(0)}</span>
-            )}
-          </div>
+          <GameImage game={leftGame} />
 
           <div className="game-choice-content">
             <h2>{leftGame.title}</h2>
@@ -108,13 +103,7 @@ function GameComparison({
         <div className="versus">VS</div>
 
         <button className="game-choice" type="button" onClick={onChooseRight}>
-          <div className="game-image-placeholder">
-            {rightGame.imageUrl ? (
-              <img src={rightGame.imageUrl} alt="" />
-            ) : (
-              <span>{rightGame.title.charAt(0)}</span>
-            )}
-          </div>
+          <GameImage game={rightGame} />
 
           <div className="game-choice-content">
             <h2>{rightGame.title}</h2>
